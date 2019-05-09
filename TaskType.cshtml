@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ToDoApp.TaskTypeModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{
+    ViewBag.Title = "Types";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TO DO LIST</title>
+</head>
+    <div>
+        <br></br>
+        <center>
+            <table border="1">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                </tr>
+                @foreach (var row in Model)
+                {
+                    <tr>
+                        <th>@row.TypeID<br /></th>
+                        <th>@row.Type<br /></th>
+                    </tr>
+                }
+            </table>
+        </center>
+
+    </div>
+</body>
+</html>
+
+
+

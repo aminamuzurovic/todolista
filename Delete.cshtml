@@ -1,0 +1,51 @@
+﻿@model  TaskModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<link href="~/Content/toastr.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<h3><center> Are you sure you want to delete this?</center></h3>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.TaskID)
+
+            <form method="post" action="@Url.Action("Delete", "TaskItem")">
+                <center><button id="DeleteObject" type="submit" class="btn btn-warning">Delete Task</button> </center>
+               
+                @if (TempData["message"] != null)
+                {
+
+                    <script type="text/javascript">
+                        $("#DeleteObject").click(function () {
+                            toastr.error("You deleted task successfully", "Delete");
+                        })
+                    </script>
+                }               
+
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

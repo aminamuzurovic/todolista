@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">              
+                <a href='@Url.Action("Index", "Home")'>
+                    <button class="btn"><i class="fa fa-home"></i></button>
+                </a>
+                <a href='@Url.Action("Index", "TaskItem")'>
+                    <button class="btn"><i class="fa fa-list"></i></button>
+                </a>
+                <a href='@Url.Action("Add", "TaskItem")'>
+                    <button class="btn_add"><i class="fa fa-plus"></i></button>                  
+                </a>
+            </div>
+            
+            </div>
+        </div>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - To Do List Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
